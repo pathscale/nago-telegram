@@ -1,20 +1,16 @@
-# nago-chat
+# nago-telegram
 
-Chat platform APIs over [nago-http](https://github.com/pathscale/nago-http): no
-tokio, no OpenSSL, no C.
+A Telegram Bot API client over [nago-http](https://github.com/pathscale/nago-http):
+no tokio, no OpenSSL, no C.
 
-One module per platform, each behind a cargo feature of the same name, so a
-service compiles only what it talks to. Each module is its platform's API as it
-is. The platforms differ too much (long poll or webhook, chat ids, formatting,
-buttons) for a shared trait to be more than a leak.
-
-| Feature | Module | Covers |
-|---|---|---|
-| `telegram` (default) | `nago_chat::telegram` | Telegram Bot API: `getMe`, `getUpdates`, `sendMessage`, `editMessageReplyMarkup`, `answerCallbackQuery`, webhooks, and `Bot::call` for any other method |
+`Bot` covers `getMe`, `getUpdates` (long poll), `sendMessage` (plain, HTML,
+MarkdownV2, replies, inline keyboards), `editMessageReplyMarkup`,
+`answerCallbackQuery` and the webhook methods, with `Bot::call` for any other
+method.
 
 ```rust
 use std::time::Duration;
-use nago_chat::telegram::{Bot, SendMessage};
+use nago_telegram::{Bot, SendMessage};
 
 let bot = Bot::new(token)?;
 nagoya::block_on(async {

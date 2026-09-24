@@ -1,0 +1,16 @@
+[package]
+name = "nago-telegram"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "A Telegram Bot API client over nago-http. No tokio, no OpenSSL, no C"
+repository = "https://github.com/pathscale/nago-telegram"
+readme = "README.md"
+keywords = ["telegram", "bot", "telegram-bot-api", "no-runtime", "nagoya"]
+categories = ["api-bindings", "web-programming::http-client"]
+
+[dependencies]
+nago-http = "^0.1.1"
+nagoya = { version = "^0.1", features = ["reactor"] }
+serde = { version = "^1", features = ["derive"] }
+serde_json = "^1"
